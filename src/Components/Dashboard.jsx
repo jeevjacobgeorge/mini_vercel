@@ -21,20 +21,25 @@ const Dashboard = () => {
     const [filebool,setfilebool] = useState(false);
     
     useEffect(() => {
-        fetch(`https://miniprojectprintmanagement.pythonanywhere.com/api/exp?batch=${selectedBatch}&roll_no=${selectedRollNo}&lab_id=${selectedLab}`, {
-            method: 'GET',
-        })
-        .then(res => res.json())
-        .then(data => {
-            const expOptions = Object.entries(data).map(([expId, expName]) => ({
-                id: expId,
-                name: expName
-            }));
-            setdata(expOptions);
-        })
-        .then(() => setResponseRecieved(true))
-        .catch(error => console.log(error));
-    }, []);
+        if (selectedBatch && selectedRollNo && selectedLab) {
+            fetch(`https://miniprojectprintmanagement.pythonanywhere.com/api/exp?batch=${selectedBatch}&roll_no=${selectedRollNo}&lab_id=${selectedLab}`, {
+                method: 'GET',
+            })
+            .then(res => res.json())
+            .then(data => {
+                const expOptions = Object.entries(data).map(([expId, expName]) => ({
+                    id: expId,
+                    name: expName
+                }));
+                setdata(expOptions);
+            })
+            .then(() => setResponseRecieved(true))
+            .catch(error => console.log(error));
+        }
+        else{
+            console.log("no local data fetched")
+        }
+        }, []);
 
 
     function handleSubmit() {
