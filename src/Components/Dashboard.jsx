@@ -77,7 +77,7 @@ const Dashboard = () => {
         <>
         {filebool &&
          <div className='confirm'>
-            <h2>Are you sure you want to upload {selectedFile.name} as {selectedExpName}?</h2>
+            <h2>Are you sure you want to upload this {selectedFile.name} as {selectedExpName}?</h2>
             <button className='yes' onClick={handleSubmit}>Yes</button>
             <button className='no' onClick={() => setfilebool(false)}>No</button>    
         </div>}
