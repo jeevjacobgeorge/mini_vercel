@@ -15,8 +15,8 @@ import {
 
 const router = createBrowserRouter([
   {
-    path: "student/upload/",
-    element:<Form/>
+    path: "/",
+    element:<Login />
   },
   {
     path: "/student/signup",
