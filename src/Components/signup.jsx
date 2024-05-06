@@ -18,14 +18,14 @@ const GetForm = () => {
       formData.append('name', selectedName);
       formData.append('batch', selectedBatch);
       formData.append('roll_no', selectedRollNo);
-      fetch('http://127.0.0.1:8000/api/signup',{
+      fetch('https://miniprojectprintmanagement.pythonanywhere.com/api/signup',{
         method: 'POST',
         body : formData
       }).then(res => setResponse(res.statusText))
       .catch(error => console.log(error))
     }
     useEffect(() => {
-      fetch('http://127.0.0.1:8000/api/batches')
+      fetch('https://miniprojectprintmanagement.pythonanywhere.com/api/batches')
           .then(response => response.json())
           .then(data => setBatchOptions(data))
           .catch(error => console.error('Error fetching batch options:', error));

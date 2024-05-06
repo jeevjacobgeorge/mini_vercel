@@ -21,7 +21,7 @@ const Dashboard = () => {
     const [filebool,setfilebool] = useState(false);
     
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/exp?batch=${selectedBatch}&roll_no=${selectedRollNo}&lab_id=${selectedLab}`, {
+        fetch(`https://miniprojectprintmanagement.pythonanywhere.com/api/exp?batch=${selectedBatch}&roll_no=${selectedRollNo}&lab_id=${selectedLab}`, {
             method: 'GET',
         })
         .then(res => res.json())
@@ -46,7 +46,7 @@ const Dashboard = () => {
         formData.append('file', selectedFile);
         // console.log(selectedFile)
         // console.log(selectedExp)
-        fetch('http://127.0.0.1:8000/api/file', {
+        fetch('https://miniprojectprintmanagement.pythonanywhere.com/api/file', {
             method: 'POST',
             body: formData
         })
@@ -104,7 +104,7 @@ const Dashboard = () => {
                                     <td>{exp.name.exp_name}</td>
                                     <td>
                                         {exp.name.uploaded ? (
-                                            <a href={"http://127.0.0.1:8000/" + exp.name.url}>Uploaded</a>
+                                            <a href={"https://miniprojectprintmanagement.pythonanywhere.com/" + exp.name.url}>Uploaded</a>
                                         ) : (
                                             <div>
                                                 <DragDrop exp={exp} />

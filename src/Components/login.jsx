@@ -17,7 +17,7 @@ const GetForm = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch(`http://127.0.0.1:8000/api/student?roll_no=${selectedRollNo}&batch=${selectedBatch}`, {
+        fetch(`https://miniprojectprintmanagement.pythonanywhere.com/api/student?roll_no=${selectedRollNo}&batch=${selectedBatch}`, {
             method: 'GET',
         })
         .then(res => {
@@ -44,7 +44,7 @@ const GetForm = () => {
 
     useEffect(() => {
         if (selectedBatch) {
-            fetch(`http://127.0.0.1:8000/api/lab?batch=${selectedBatch}`, {
+            fetch(`https://miniprojectprintmanagement.pythonanywhere.com/api/lab?batch=${selectedBatch}`, {
                 method: 'GET',
             })
             .then(res => res.json())
@@ -60,7 +60,7 @@ const GetForm = () => {
     }, [selectedBatch]);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/batches')
+        fetch('https://miniprojectprintmanagement.pythonanywhere.com/api/batches')
             .then(response => response.json())
             .then(data => setBatchOptions(data))
             .catch(error => console.error('Error fetching batch options:', error));

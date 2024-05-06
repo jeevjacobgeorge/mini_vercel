@@ -15,7 +15,7 @@ const GetForm = () => {
       formData.append('lab_id', selectedLab);
       formData.append('exp_id', selectedExp);
       formData.append('file',selectedFile);
-      fetch('http://127.0.0.1:8000/api/file',{
+      fetch('https://miniprojectprintmanagement.pythonanywhere.com/file',{
         method: 'POST',
         body : formData
       }).then(res => setResponse(res.statusText))
