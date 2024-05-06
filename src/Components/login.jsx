@@ -40,7 +40,7 @@ const GetForm = () => {
         selectedRollNo: selectedRollNo,
         selectedLab: selectedLab
       };
-    sessionStorage.setItem('userData', JSON.stringify(userData));
+    localStorage.setItem('userData', JSON.stringify(userData));
 
     useEffect(() => {
         if (selectedBatch) {

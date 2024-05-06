@@ -12,7 +12,7 @@ const Dashboard = () => {
     const [data, setdata] = useState([]);
     const [dragging, setDragging] = useState(false); // State to track dragging state
     const [isDroppingFiles, setIsDroppingFiles] = useState(false); // State to track file dropping
-    const userData = sessionStorage.getItem('userData');
+    const userData = localStorage.getItem('userData');
     const parsedData = JSON.parse(userData);
     const selectedBatch = parsedData.selectedBatch;
     const selectedRollNo = parsedData.selectedRollNo;
