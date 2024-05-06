@@ -1,44 +1,39 @@
-
-import Form from './Components/UploadForm.jsx'
-import Signup from './Components/signup.jsx'
-import Login from './Components/login.jsx'
-import Dashboard from './Components/Dashboard.jsx'
-import './index.css'
+import Signup from './Components/signup.jsx';
+import Login from './Components/login.jsx';
+import Dashboard from './Components/Dashboard.jsx';
+import './index.css';
 import * as React from "react";
 import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
   Route,
-  Link,
+  Link
 } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: "login",
-    element:<Login />
+    path: "/",
+    element: <Login />
   },
   {
-    path: "student/signup",
-    element: <Signup/>,
+    path: "/student/signup",
+    element: <Signup />,
   },
   {
     path: "/student/login",
     element: <Login />
   },
   {
-    path: "/student/dashboard",
+    path: "student/dashboard",
     element: <Dashboard />
   },
   {
-    path: "student/dashboard",
+    path: "/student/dashboard",
     element: <Dashboard />
   }
-
-
 ]);
 
 createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
 );
-
