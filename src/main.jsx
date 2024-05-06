@@ -15,11 +15,11 @@ import {
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "login",
     element:<Login />
   },
   {
-    path: "/student/signup",
+    path: "student/signup",
     element: <Signup/>,
   },
   {
@@ -28,6 +28,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/student/dashboard",
+    element: <Dashboard />
+  },
+  {
+    path: "student/dashboard",
     element: <Dashboard />
   }
 
