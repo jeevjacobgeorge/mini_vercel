@@ -1,109 +1,187 @@
-body{
+body {
     box-sizing: border-box;
-    background: rgba(0, 0, 0,0.9);
-}
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    width: 100%;
-    height: 100%;
-}
-.formDetails {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; 
-    margin-top: 40px;
-    border: 1px solid black;
-    border-radius: 10px;
-    width: 700px;
-    height: 600px;
-    background: rgba(22,32,42,255);
-    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    margin: 0;
+    padding: 0;
 }
 
-img{
-    height: 600px;
-    width: 65%;
-}
-.profile{
-    height: 200px;
-    width: 65%; 
-    margin-left: 45px;
-    margin-bottom: 0px;
-}
-h1{
-    color: white;
-    margin-top: 0px;
-    margin-left: 70px;
-    margin-bottom: 15px;
-}
-form{
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100%;
-    margin: 20px;
-    margin-bottom: 0;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #3E3F3F;
 }
+
+.formDetails,
+.formDetials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-block: 20px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 700px;
+    background: rgba(22, 32, 42, 255);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin: 20px 0;
+}
+
+img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: none; /* Hide images by default */
+}
+
+.profile {
+    width: 100%;
+    max-height: 200px;
+    margin-bottom: 0px;
+    display: none; /* Hide profile image by default */
+}
+
+h1 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
 .form-group {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 20px;
-    width: 100%; 
+    width: 100%;
 }
 
 label {
-    margin-right: 3px;
-    flex: 1; 
+    margin-bottom: 5px;
     font-size: 20px;
     color: white;
 }
-
+.form-group>label{
+    margin-bottom: 0px;
+    font-size: large;
+}
 select,
-input[type="number"] {
-    flex: 2; 
-    width: 40%;
+.form-group>input[type="number"],
+.form-group>input[type="text"] {
+    width: 90%;
     background: transparent;
     border: 1px solid white;
     border-radius: 10px;
     color: white;
-    padding: 5px;
-} 
+    padding: 10px;
+    margin-bottom: 10px;
+}
 
-.login {
+.login,
+.signup {
     width: 100%;
-    max-width: 150px; 
+    max-width: 150px;
     margin: 15px;
     font-weight: bold;
-    font-size: 25px;
-    flex: 1;
-    background: rgba(197,166,1,255);
+    background: rgba(197, 166, 1, 1);
     border: none;
     color: white;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
-    padding-left: 15px;
-    padding-right: 15px;
     border-radius: 20px;
-    margin-top: 15px;
-    margin-left: 60px;
+    text-align: center;
 }
 
-.Signup{
-   color: white;
-    margin-top: 3px;
-   text-decoration: none;
-   /* font-size: 15px;*/ 
-} 
-span{
-    color: rgba(197,166,1,255);
-    font-weight: bold;
-
+.signup {
+    font-size: 18px;
+    padding: 5px 15px;
 }
-option{
+
+.login {
+    font-size: 25px;
+}
+
+.Signup {
     color: white;
-    background-color: rgba(22,32,42,255);
+    margin-top: 3px;
+    text-decoration: none;
+    text-align: center;
+}
+
+span {
+    color: rgba(197, 166, 1, 1);
+    font-weight: bold;
+}
+
+option {
+    color: white;
+    background-color: rgba(22, 32, 42, 1);
     border: 1px solid white;
+}
+
+.formDetails h1,
+.formDetials h1 {
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .formDetails,
+    .formDetials {
+        flex-direction: row;
+        width: 700px;
+        height: auto;
+    }
+
+    .form-group {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    img,
+    .profile {
+        display: block; /* Show images on larger screens */
+        width: 65%;
+        margin-inline: 12px;
+    }
+
+    .form-group label {
+        flex: 1;
+        margin-right: 3px;
+    }
+
+    select,
+    input[type="number"],
+    input[type="text"] {
+        flex: 2;
+        width: auto;
+    }
+
+    .login,
+    .signup {
+        margin-top: 15px;
+        margin-left: 60px;
+    }
 }

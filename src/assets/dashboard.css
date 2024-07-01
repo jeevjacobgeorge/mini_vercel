@@ -1,117 +1,122 @@
-html{
-    color:white;
+html {
+    color: white;
 }
-*{
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-.dash-whole{
+
+.dash-whole {
     height: 100vh;
 }
-.container-dashboard{
+
+.container-dashboard {
     min-height: 80vh;
-    margin-inline:122px;
-   
+    margin-inline: 5%;
 }
-.nav{
+
+.nav {
     display: flex;
     justify-content: space-between;
-    color:black;
+    color: black;
 }
-.logout{
-    padding:12px;
+
+.logout {
+    padding: 12px;
 }
-h1{
-    color:rgba(5, 27, 48, 0.9);
+
+h1 {
+    color: rgba(5, 27, 48, 0.9);
     margin-top: 0px;
     margin-left: 7px;
     margin-bottom: 5px;
 }
 
-main.table{
+main.table {
     width: 90vw;
     height: 90vh;
-    background: url('./assests/cube_cut.jpg') center/cover;
+    background: url('./assets/cube_cut.jpg') center/cover;
     backdrop-filter: blur(7px);
     box-shadow: 0 .4rem .8rem #0005;
     border-radius: .9rem;
     overflow: hidden;
-    
-    
 }
-.head{
+
+.head {
     background-color: #212121;
 }
-.table_header{
+
+.table_header {
     width: 100%;
     height: 10%;
-    font-size:30px;
+    font-size: 30px;
     margin-bottom: 40px;
     background-color: rgba(5, 27, 48, 0.9);
     padding: .8rem 1rem;
-    
 }
-.table_body{
+
+.table_body {
     width: 95%;
     max-height: calc(89% - .8rem);
     background-color: rgba(190, 198, 207, 0.7);
-    /* background-color: rgba(100,97,92,0.5); */
     margin: .8rem auto;
     border-radius: .6rem;
-    color:#2A2827;
+    color: #2A2827;
     font-weight: 600;
     overflow: auto;
 }
 
-.table_body::-webkit-scrollbar{
+.table_body::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
 }
-.table_body::-webkit-scrollbar-thumb{
+
+.table_body::-webkit-scrollbar-thumb {
     border-radius: .5rem;
     background-color: #0004;
     visibility: hidden;
-    
 }
-.table_body:hover::-webkit-scrollbar-thumb{
+
+.table_body:hover::-webkit-scrollbar-thumb {
     visibility: visible;
 }
-.table_body a{
+
+.table_body a {
     text-decoration: none;
-    color:#2A2827;
+    color: #2A2827;
     font-weight: 600;
 }
-table{
-    width: 100%;  
-    border-radius: 12px; 
+
+table {
+    width: 100%;
+    border-radius: 12px;
 }
-table, th, td{
+
+table, th, td {
     border-collapse: collapse;
     padding: 1rem;
-    
 }
-.button-upload{
+
+.button-upload {
     border-radius: 16px;
 }
-thead th{
+
+thead th {
     position: sticky;
     top: 0;
     left: 0;
     background-color: rgba(213, 209, 222, 0.5);
     font-size: 17px;
-    font-family: 'poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-
-tbody td{
+tbody td {
     text-align: center;
 }
 
-
-/*profile pic*/
-
-.profilepic{
+.profilepic {
     height: 90px;
     width: 90px;
     position: absolute;
@@ -125,68 +130,90 @@ tbody td{
     border: 5px solid blue;
     width: 200px;
     height: 100px;
-  }
+}
 
-  .button-upload {
-    /* Reset OS-specfic / browser-specific default style (see https://ishadeed.com/article/styling-the-good-old-button/#the-default-styles) */
-    -webkit-appearance: none;
-    -moz-appearance: none;
+.button-upload {
     appearance: none;
-    background: rgba(255, 255, 255); /* to be replaced with your custom design */
-    border: 1px solid currentColor; /* to be replaced with your custom design */
-    /* Signify interactivity */
-    border-radius: 4px; /* no physical button has a sharp corner; exact value to be replaced for your custom design */
+    background: rgba(255, 255, 255);
+    border: 1px solid currentColor;
+    border-radius: 4px;
     cursor: pointer;
-    /* Match font style with the parent element */
     font: inherit;
-    /* Make the button easy for touchscreen users to tap */
     min-height: 48px;
     min-width: 48px;
-  }
-  .button-upload:focus {
-    outline-offset: 4px; /* make Chrome show a focus ring around the button */
-  }
-  /* For decoration purpose only */
-  body {
-    /* System font stack; for detail, see my blog post: https://medium.com/towards-more-beautiful-web-typography/survey-system-font-stack-5f73a3b39776?sk=1146fc332b93995a83493f2f887acc72 */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", Arial, sans-serif;
-  }
-.confirm{
+}
+
+.button-upload:focus {
+    outline-offset: 4px;
+}
+
+.confirm {
     color: white;
     font-weight: bold;
     font-size: 14px;
-    flex: 1;
     background: #3F3E3D;
     border: none;
-    color: white;
     padding: 5px;
     cursor: pointer;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 20px;
-    margin-top: 15px;
-    margin-left: 60px;
-    margin-bottom: 15px;
-    margin-right: 60px;
+    margin: 15px 60px;
+}
 
-}  
-.confirm button{
+.confirm button {
     color: white;
     font-weight: bold;
     font-size: 18px;
-    flex: 1;
     background: #CECFCE;
     border: none;
-    color: rgb(0, 0, 0);
     padding: 5px;
     cursor: pointer;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 20px;
-    margin-top: 15px;
-    margin-left: 60px;
-    margin-bottom: 15px;
-    margin-right: 60px;
-    
+    margin: 15px 60px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .container-dashboard {
+        margin-inline: 20px;
+    }
+
+    .table_header {
+        font-size: 24px;
+        padding: .6rem .8rem;
+    }
+
+    main.table {
+        height: auto;
+    }
+
+    .table_body {
+        max-height: 70vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .table_header {
+        font-size: 20px;
+        padding: .4rem .6rem;
+    }
+
+    .table_body {
+        max-height: 60vh;
+        padding: .4rem .6rem;
+    }
+
+    .profilepic {
+        height: 60px;
+        width: 60px;
+    }
+
+    .confirm, .confirm button {
+        font-size: 16px;
+        padding: 10px;
+        margin: 10px 30px;
+    }
 }
