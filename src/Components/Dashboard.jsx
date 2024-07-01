@@ -1,93 +1,99 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import '../assets/dashboard.css';
-import { Link } from 'react-router-dom';
 import profilepic from '../assets/profilepic.svg';
 import { FileUploader } from "./FileUploader.jsx";
 import backgroundImage from '../assets/printer.jpg';
+
 const Dashboard = () => {
+    const location = useLocation();
+    const { userData } = location.state || {};
+
     const [selectedFile, setSelectedFile] = useState('');
     const [selectedExp, setSelectedExp] = useState('');
     const [response, setResponse] = useState('');
     const [responseRecieved, setResponseRecieved] = useState(false);
-    const [data, setdata] = useState([]);
-    const [dragging, setDragging] = useState(false); // State to track dragging state
-    const [isDroppingFiles, setIsDroppingFiles] = useState(false); // State to track file dropping
-    const userData = localStorage.getItem('userData');
-    const parsedData = JSON.parse(userData);
-    const selectedBatch = parsedData.selectedBatch;
-    const selectedRollNo = parsedData.selectedRollNo;
-    const selectedLab = parsedData.selectedLab;
+    const [data, setData] = useState([]);
     const [selectedExpName, setSelectedExpName] = useState(''); // State to store selectedExpName 
-    const [filebool,setfilebool] = useState(false);
-    
-    useEffect(() => {
+    const [filebool, setFilebool] = useState(false);
+
+    const selectedBatch = userData?.selectedBatch;
+    const selectedRollNo = userData?.selectedRollNo;
+    const selectedLab = userData?.selectedLab;
+    const loadData = () => {
         if (selectedBatch && selectedRollNo && selectedLab) {
             fetch(`https://miniprojectprintmanagement.pythonanywhere.com/api/exp?batch=${selectedBatch}&roll_no=${selectedRollNo}&lab_id=${selectedLab}`, {
                 method: 'GET',
             })
-            .then(res => res.json())
-            .then(data => {
-                const expOptions = Object.entries(data).map(([expId, expName]) => ({
-                    id: expId,
-                    name: expName
-                }));
-                setdata(expOptions);
-            })
-            .then(() => setResponseRecieved(true))
-            .catch(error => console.log(error));
+                .then(res => res.json())
+                .then(data => {
+                    const expOptions = Object.entries(data).map(([expId, expName]) => ({
+                        id: expId,
+                        name: expName
+                    }));
+                    setData(expOptions);
+                })
+                .then(() => setResponseRecieved(true))
+                .catch(error => console.log(error));
+        } else {
+            console.log("No local data fetched");
         }
-        else{
-            console.log("no local data fetched")
-        }
-        }, []);
+    }
+    useEffect(loadData, [selectedBatch, selectedRollNo, selectedLab]);
 
-
-    function handleSubmit() {
+    const handleSubmit = () => {
         const formData = new FormData();
         formData.append('batch', selectedBatch);
         formData.append('roll_no', selectedRollNo);
         formData.append('lab_id', selectedLab);
         formData.append('exp_id', selectedExp);
         formData.append('file', selectedFile);
-        // console.log(selectedFile)
-        // console.log(selectedExp)
+
         fetch('https://miniprojectprintmanagement.pythonanywhere.com/api/file', {
             method: 'POST',
             body: formData
         })
-        .then(res => setResponse(res.statusText)).then(window.location.reload())
-        .catch(error => console.log(error));
-        
-    }
+            .then(res => {
+                if (res.ok) {
+                    setResponse(res.statusText);
+                } else {
+                    return res.json().then(error => {
+                        throw new Error(error.message);
+                    });
+                }
+            })
+            .then(() => setFilebool(false))
+            .then(loadData)
+            .catch(error => alert(error.message));
+    };
 
-    function DragDrop({ exp }) {
+    const DragDrop = ({ exp }) => {
         const [fileName, setFileName] = useState("");
-        const handleFile =   (file) => {
+        const handleFile = (file) => {
             setSelectedFile(file);
             setFileName(file.name);
             setSelectedExp(exp.id);
             setSelectedExpName(exp.name.exp_name);
-            setfilebool(true);
+            setFilebool(true);
         };
-      return (
-          <div className="file-uploader">
-               <FileUploader handleFile={handleFile}  />
-              
-              
-          </div>
-      );
-  }
+        return (
+            <div className="file-uploader">
+                <FileUploader handleFile={handleFile} />
+            </div>
+        );
+    };
 
     return (
         <>
-        {filebool &&
-         <div className='confirm'>
-            <h2>Are you sure you want to upload this {selectedFile.name} as {selectedExpName}?</h2>
-            <button className='yes' onClick={handleSubmit}>Yes</button>
-            <button className='no' onClick={() => setfilebool(false)}>No</button>    
-        </div>}
+            {filebool && (
+                <div className='confirm'>
+                    <h2>Are you sure you want to upload this {selectedFile.name} as {selectedExpName}?</h2>
+                    <button className='yes' onClick={handleSubmit}>Yes</button>
+                    <button className='no' onClick={() => setFilebool(false)}>No</button>
+                </div>
+            )}
             <div className='dash-whole' style={{ backgroundImage: `url(${backgroundImage})` }}>
-                <div className="container-dashboard"  >
+                <div className="container-dashboard">
                     <div className="nav">
                         <h1 className='headertext'>Dash<span>board</span></h1>
                         <div className='logout'>
@@ -113,7 +119,6 @@ const Dashboard = () => {
                                         ) : (
                                             <div>
                                                 <DragDrop exp={exp} />
-                                                
                                             </div>
                                         )}
                                     </td>

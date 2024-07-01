@@ -28,10 +28,7 @@ const router = createBrowserRouter([
     path: "student/dashboard",
     element: <Dashboard />
   },
-  {
-    path: "/student/dashboard",
-    element: <Dashboard />
-  }
+
 ]);
 
 createRoot(document.getElementById("root")).render(
