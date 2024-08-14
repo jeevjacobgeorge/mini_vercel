@@ -115,7 +115,7 @@ const Dashboard = () => {
                                     <td>{exp.name.exp_name}</td>
                                     <td>
                                         {exp.name.uploaded ? (
-                                            <a href={"https://miniprojectprintmanagement.pythonanywhere.com/" + exp.name.url}>Uploaded</a>
+                                            <a href={"#" + exp.name.url}>Uploaded</a>
                                         ) : (
                                             <div>
                                                 <DragDrop exp={exp} />
